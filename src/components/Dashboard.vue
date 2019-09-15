@@ -25,6 +25,7 @@
         <div class="navigation_location">Dashboard</div>
       </div>
     </div>
+
     <div class="control_panel">
       <div class="left_expander" v-on:click="toggle('left')" :class="[toggleLeft ? 'change' : '']">
         <div class="bar1"></div>
@@ -39,7 +40,7 @@
           <a href="#">Link 3</a>
         </div>
       </div>
-            <div class="file_dropdown" v-on:click="toggle('view')" :class="[toggleView ? 'display' : '']">
+      <div class="file_dropdown" v-on:click="toggle('view')" :class="[toggleView ? 'display' : '']">
         View ﹀
         <div class="dropdown-content">
           <a href="#">Link 1</a>
@@ -48,8 +49,23 @@
         </div>
       </div>
     </div>
+
     <div class="main_window">
-      <div class="left_panel">left</div>
+      <div class="menu_display" :class="[toggleMenu ? 'display' : '']">
+          <div class="header">
+              Menu Stuff
+          </div>
+          <div class="menu_item">
+              Item 1
+          </div>
+          <div class="menu_item">
+              Item 2
+          </div>
+                 <div class="menu_item">
+              Item 3
+          </div>
+          </div>
+      <div class="left_panel" :class="[toggleMenu ? 'hide' : '']">left</div>
       <div class="content_container">
         <div class="content">Content view</div>
       </div>
@@ -65,7 +81,7 @@ export default {
       toggleMenu: false,
       toggleLeft: false,
       toggleFile: false,
-      toggleView: false,
+      toggleView: false
     };
   },
   methods: {
@@ -83,12 +99,12 @@ export default {
           break;
         case "file":
           !this.toggleFile
-            ? (this.toggleFile = true, this.toggleView = false)
+            ? ((this.toggleFile = true), (this.toggleView = false))
             : (this.toggleFile = false);
           break;
-                  case "view":
+        case "view":
           !this.toggleView
-            ? (this.toggleView = true, this.toggleFile = false)
+            ? ((this.toggleView = true), (this.toggleFile = false))
             : (this.toggleView = false);
           break;
       }
@@ -150,6 +166,31 @@ export default {
   height: 100%;
   padding-left: 1px;
   cursor: pointer;
+}
+
+.menu_display {
+    display: none;
+  width: 130px;
+  background-color: #f2c812;
+}
+
+.header {
+    color: #000000;
+    border-bottom: 1px solid black;
+    margin: 0 10px 5px 10px;
+    font-weight: bold;
+}
+
+.menu_item {
+        color: #000000;
+    margin: 0 10px 5px 10px;
+    font-size: 14px;
+}
+
+.menu_item:hover {
+        color: #000000;
+    margin: 0 10px 5px 10px;
+    font-weight: bold;
 }
 
 .navigation {
@@ -266,6 +307,14 @@ export default {
   text-decoration: none;
   display: block;
   font-size: 10px;
+}
+
+.hide{
+    display: none;
+}
+
+.display {
+      display: block;
 }
 
 .display .dropdown-content {
