@@ -1,18 +1,18 @@
 <template>
   <div class="dashboard">
     <div class="banner">
-      <div class="menu-btn">
-        <div class="column">
+      <div class="menu-btn" v-on:click="toggle('menu')" :class="[toggleMenu ? 'change' : '']">
+        <div class="column1">
           <div class="dot"></div>
           <div class="dot"></div>
           <div class="dot"></div>
         </div>
-        <div class="column">
+        <div class="column2">
           <div class="dot"></div>
           <div class="dot"></div>
           <div class="dot"></div>
         </div>
-        <div class="column">
+        <div class="column3">
           <div class="dot"></div>
           <div class="dot"></div>
           <div class="dot"></div>
@@ -26,10 +26,26 @@
       </div>
     </div>
     <div class="control_panel">
-      <div class="container" onclick="myFunction(this)">
+      <div class="left_expander" v-on:click="toggle('left')" :class="[toggleLeft ? 'change' : '']">
         <div class="bar1"></div>
         <div class="bar2"></div>
         <div class="bar3"></div>
+      </div>
+      <div class="file_dropdown" v-on:click="toggle('file')" :class="[toggleFile ? 'display' : '']">
+        File ﹀
+        <div class="dropdown-content">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </div>
+            <div class="file_dropdown" v-on:click="toggle('view')" :class="[toggleView ? 'display' : '']">
+        View ﹀
+        <div class="dropdown-content">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
       </div>
     </div>
     <div class="main_window">
@@ -43,7 +59,41 @@
 
 <script>
 export default {
-  name: "Dashboard"
+  name: "Dashboard",
+  data() {
+    return {
+      toggleMenu: false,
+      toggleLeft: false,
+      toggleFile: false,
+      toggleView: false,
+    };
+  },
+  methods: {
+    toggle: function(choice) {
+      switch (choice) {
+        case "menu":
+          !this.toggleMenu
+            ? (this.toggleMenu = true)
+            : (this.toggleMenu = false);
+          break;
+        case "left":
+          !this.toggleLeft
+            ? (this.toggleLeft = true)
+            : (this.toggleLeft = false);
+          break;
+        case "file":
+          !this.toggleFile
+            ? (this.toggleFile = true, this.toggleView = false)
+            : (this.toggleFile = false);
+          break;
+                  case "view":
+          !this.toggleView
+            ? (this.toggleView = true, this.toggleFile = false)
+            : (this.toggleView = false);
+          break;
+      }
+    }
+  }
 };
 </script>
 
@@ -126,8 +176,11 @@ export default {
   font-size: 13px;
 }
 
-.column {
+.column1,
+.column2,
+.column3 {
   margin-top: 10px;
+  transition: 0.4s;
 }
 
 .dot {
@@ -138,26 +191,27 @@ export default {
   margin-bottom: 1px;
 }
 
-.container {
+.left_expander {
   display: inline-block;
   cursor: pointer;
   padding-left: 6px;
   padding-top: 5px;
 }
 
-.bar1, .bar2, .bar3 {
+.bar1,
+.bar2,
+.bar3 {
   width: 16px;
   height: 1px;
-  background-color:white;
+  background-color: white;
   margin: 4px 0;
   transition: 0.4s;
-  
 }
 
 /* Rotate first bar */
 .change .bar1 {
-  -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
-  transform: rotate(-45deg) translate(-9px, 6px) ;
+  -webkit-transform: rotate(-45deg) translate(-5px, 4px);
+  transform: rotate(-45deg) translate(-5px, 4px);
 }
 
 /* Fade out the second bar */
@@ -167,7 +221,54 @@ export default {
 
 /* Rotate last bar */
 .change .bar3 {
-  -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
-  transform: rotate(45deg) translate(-8px, -8px) ;
+  -webkit-transform: rotate(45deg) translate(-3px, -3px);
+  transform: rotate(45deg) translate(-3px, -3px);
+}
+
+.change .column1 {
+  -webkit-transform: rotate(60deg) translate(1px, -1px);
+  transform: rotate(45deg) translate(1px, -1px);
+}
+
+/* Fade out the second bar */
+.change .column2 {
+  opacity: 0;
+}
+
+/* Rotate last bar */
+.change .column3 {
+  -webkit-transform: rotate(-45deg) translate(0px, -2px);
+  transform: rotate(-45deg) translate(0px, -2px);
+}
+
+.file_dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 18px;
+  font-size: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333333e3;
+  min-width: 50px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding-left: 6px;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 5px 6px;
+  text-decoration: none;
+  display: block;
+  font-size: 10px;
+}
+
+.display .dropdown-content {
+  display: block;
 }
 </style>
