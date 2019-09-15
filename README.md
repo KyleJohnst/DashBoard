@@ -1,6 +1,7 @@
-# mc_dermott
+# mc_dermott Dashboard
 
 ## Project setup
+Setup and install
 ```
 npm install
 ```
@@ -9,21 +10,5 @@ npm install
 ```
 npm run serve
 ```
+Once started page will be running on http://localhost:8080
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
