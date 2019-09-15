@@ -35,37 +35,38 @@
       <div class="file_dropdown" v-on:click="toggle('file')" :class="[toggleFile ? 'display' : '']">
         File ﹀
         <div class="dropdown-content">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
+          <a href="#">Item 1</a>
+          <a href="#">Item 2</a>
+          <a href="#">Item 3</a>
         </div>
       </div>
       <div class="file_dropdown" v-on:click="toggle('view')" :class="[toggleView ? 'display' : '']">
         View ﹀
         <div class="dropdown-content">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
+          <a href="#">Item 1</a>
+          <a href="#">Item 2</a>
+          <a href="#">Item 3</a>
         </div>
       </div>
     </div>
 
     <div class="main_window">
       <div class="menu_display" :class="[toggleMenu ? 'display' : '']">
-          <div class="header">
-              Menu Stuff
-          </div>
-          <div class="menu_item">
-              Item 1
-          </div>
-          <div class="menu_item">
-              Item 2
-          </div>
-                 <div class="menu_item">
-              Item 3
-          </div>
-          </div>
-      <div class="left_panel" :class="[toggleMenu ? 'hide' : '']">left</div>
+        <div class="header">Menu Stuff</div>
+        <div class="menu_item">Item 1</div>
+        <div class="menu_item">Item 2</div>
+        <div class="menu_item">Item 3</div>
+      </div>
+      <div class="left_panel" :class="[toggleLeft || toggleMenu ? 'left_expanded' : '']">
+          <div class="left_item_mini"  :class="[toggleLeft ? 'hide' : 'display']">Item</div>
+          <div class="left_item_large" :class="[toggleLeft ? 'display' : 'hide']">Item Extended</div>
+          <div class="left_item_mini" :class="[toggleLeft ? 'hide' : 'display']">Item</div>
+          <div class="left_item_large" :class="[toggleLeft ? 'display' : 'hide']">Item Extended</div>
+          <div class="left_item_mini" :class="[toggleLeft ? 'hide' : 'display']">Item</div>
+          <div class="left_item_large" :class="[toggleLeft ? 'display' : 'hide']">Item Extended</div>
+          <div class="left_item_mini" :class="[toggleLeft ? 'hide' : 'display']">Item</div>
+          <div class="left_item_large" :class="[toggleLeft ? 'display' : 'hide']">Item Extended</div>
+      </div>
       <div class="content_container">
         <div class="content">Content view</div>
       </div>
@@ -114,6 +115,10 @@ export default {
 </script>
 
 <style scoped>
+.dashboard {
+    height: 100%;
+    width: 100%;
+}
 .banner {
   display: flex;
   background-color: #000000;
@@ -136,20 +141,39 @@ export default {
 
 .main_window {
   display: flex;
+  height: 100%;
 }
 
 .left_panel {
   display: inline-block;
-  background-color: #212121;
+  background-color: #333333;
   width: 32px;
+  height: 100%;
+}
+
+.left_expanded {
+   width: 145px; 
+}
+
+.left_item_mini {
+    padding: 0 2px 2px 4px;
+    font-size: 10px;
+    background-color: #212121;
+}
+
+.left_item_large {
+    padding: 4px 2px 5px 18px;
+    font-size: 10px;
+    background-color: #212121;
 }
 
 .content_container {
   display: inline-block;
   background-color: white;
   width: 100%;
-  height: 500px;
+  height: 100%;
   background-color: #eaeaea;
+  
 }
 
 .content {
@@ -169,28 +193,30 @@ export default {
 }
 
 .menu_display {
-    display: none;
+    position: absolute;
+  display: none;
   width: 130px;
+  height: 100%;
   background-color: #f2c812;
 }
 
 .header {
-    color: #000000;
-    border-bottom: 1px solid black;
-    margin: 0 10px 5px 10px;
-    font-weight: bold;
+  color: #000000;
+  border-bottom: 1px solid black;
+  margin: 0 10px 5px 10px;
+  font-weight: bold;
 }
 
 .menu_item {
-        color: #000000;
-    margin: 0 10px 5px 10px;
-    font-size: 14px;
+  color: #000000;
+  margin: 0 10px 5px 10px;
+  font-size: 14px;
 }
 
 .menu_item:hover {
-        color: #000000;
-    margin: 0 10px 5px 10px;
-    font-weight: bold;
+  color: #000000;
+  margin: 0 10px 5px 10px;
+  font-weight: bold;
 }
 
 .navigation {
@@ -309,15 +335,19 @@ export default {
   font-size: 10px;
 }
 
-.hide{
-    display: none;
+.hide {
+  display: none;
 }
 
 .display {
-      display: block;
+  display: block;
 }
 
 .display .dropdown-content {
   display: block;
+}
+
+.expand_left {
+    display: block;
 }
 </style>
