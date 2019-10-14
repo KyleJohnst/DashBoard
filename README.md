@@ -1,4 +1,4 @@
-# mc_dermott Dashboard
+# Dashboard
 
 ## Project setup
 Setup and install
