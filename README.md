@@ -1,6 +1,9 @@
 # Dashboard
 
-## Project setup
+### Demo
+![](Screengif.gif)
+
+### Project setup
 Setup and install
 ```
 npm install
@@ -11,4 +14,3 @@ npm install
 npm run serve
 ```
 Once started page will be running on http://localhost:8080
-
