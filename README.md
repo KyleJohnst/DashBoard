@@ -13,4 +13,4 @@ npm install
 ```
 npm run serve
 ```
-Once started page will be running on http://localhost:8080
+Once started page will be served up on http://localhost:8080
